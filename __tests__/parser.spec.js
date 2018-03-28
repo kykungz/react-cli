@@ -40,7 +40,6 @@ describe.only('parser', () => {
         'suffix a\n' +
         'suffix b\n\n' +
         'export a\n'
-      console.log(parser.toString(template))
       expect(parser.toString(template)).toEqual(expected)
     })
   })
