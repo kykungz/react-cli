@@ -4,7 +4,7 @@ const fs = require('fs')
 const path = require('path')
 const coffee = require('coffee-script')
 const parser = require('./parser')
-
+const { COMPONENT_NAME } = require('./constants')
 // const config = new Conf()
 
 class ReactCli {
@@ -27,7 +27,7 @@ class ReactCli {
       template = parser.concat(template, coffee.eval(cson))
     }
 
-    return parser.toString(template).replace(new RegExp('%{COMPONENT_NAME}%', 'g'), name)
+    return parser.toString(template).replace(new RegExp(COMPONENT_NAME, 'g'), name)
   }
 }
 

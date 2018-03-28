@@ -17,10 +17,12 @@ const cli = meow(`
   {
     boolean: ['functional', 'pure', 'prop-types'],
     alias: { f: 'functional', p: 'pure', t: 'prop-types' }
-  })
+  }
+)
+
+reactCli.init()
 
 const command = cli.input[0]
-
 const commandList = {
   create: () => reactCli.create(cli.input[1], cli.flags)
 }
