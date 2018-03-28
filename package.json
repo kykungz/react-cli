@@ -1,0 +1,38 @@
+{
+  "name": "react-cli",
+  "version": "1.0.0",
+  "description": "React utilities",
+  "main": "index.js",
+  "scripts": {
+    "test": "eslint **/*.js && jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kykungz/react-cli.git"
+  },
+  "author": "Kongpon Charanwattanakit",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kykungz/react-cli/issues"
+  },
+  "homepage": "https://github.com/kykungz/react-cli#readme",
+  "devDependencies": {
+    "eslint": "^4.10.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "jest": "^21.2.1"
+  },
+  "dependencies": {
+    "axios": "^0.17.0",
+    "chalk": "^2.3.0",
+    "coffee-script": "^1.12.7",
+    "conf": "^1.3.1",
+    "execa": "^0.8.0",
+    "inquirer": "^3.3.0",
+    "meow": "^3.7.0",
+    "update-notifier": "^2.3.0"
+  }
+}

@@ -1,0 +1,18 @@
+import: """
+  import React from 'react'
+"""
+
+prefix: ""
+
+body: """
+  const %{COMPONENT_NAME}% = () => (
+    <div>
+    </div>
+  )
+"""
+
+suffix: ""
+
+export: """
+  export default %{COMPONENT_NAME}%
+"""

@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`create class component should return correct template 1`] = `
+"import React, { Component } from 'react'
+
+class MyComponent extends Component {
+  render () {
+    return (
+      <div>
+      </div>
+    )
+  }
+}
+
+export default MyComponent"
+`;
+
+exports[`create class component with prop-types should return correct template 1`] = `
+"
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+
+class MyComponent extends Component {
+  render () {
+    return (
+      <div>
+      </div>
+    )
+  }
+}
+
+MyComponent.propTypes = {}
+
+export default MyComponent"
+`;
+
+exports[`create functional component should return correct template 1`] = `
+"import React, { Component } from 'react'
+
+class MyFunctionalComponent extends Component {
+  render () {
+    return (
+      <div>
+      </div>
+    )
+  }
+}
+
+export default MyFunctionalComponent"
+`;
+
+exports[`create pure component should return correct template 1`] = `
+"import React, { Component } from 'react'
+
+class MyPureComponent extends Component {
+  render () {
+    return (
+      <div>
+      </div>
+    )
+  }
+}
+
+export default MyPureComponent"
+`;
