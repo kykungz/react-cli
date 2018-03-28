@@ -39,7 +39,7 @@ describe.only('parser', () => {
         'prefix a\n\n' +
         'suffix a\n' +
         'suffix b\n\n' +
-        'export a'
+        'export a\n'
       console.log(parser.toString(template))
       expect(parser.toString(template)).toEqual(expected)
     })

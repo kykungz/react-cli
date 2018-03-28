@@ -33,5 +33,9 @@ module.exports.concat = (base, template) => {
 
 module.exports.toString = (template) => {
   template = fix(template)
-  return `${template.import}\n${template.prefix}\n${template.body}\n${template.suffix}\n${template.export}\n`
+  return Object.entries(template)
+    .filter(entry => entry[1] !== '') // remove empty sections
+    .map(entry => entry[1]) // flatten array (only contains values)
+    .join('\n\n') // blank space
+    .concat('\n') // ending newline
 }
