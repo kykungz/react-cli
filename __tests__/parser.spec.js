@@ -2,7 +2,7 @@
 
 const parser = require('../src/parser')
 
-describe('parser', () => {
+describe.only('parser', () => {
   describe('concat', () => {
     test('should return merged template', () => {
       const base = {
@@ -30,20 +30,17 @@ describe('parser', () => {
         import: 'import a\nimport b',
         prefix: 'prefix a',
         body: '',
-        suffix: 'suffix a\b suffix b',
+        suffix: 'suffix a\nsuffix b',
         export: 'export a'
       }
-      const expected = `
-        import a
-        import b
-
-        prefix a
-
-        suffix a
-        suffix b
-
-        export a
-      `
+      const expected =
+        'import a\n' +
+        'import b\n\n' +
+        'prefix a\n\n' +
+        'suffix a\n' +
+        'suffix b\n\n' +
+        'export a'
+      console.log(parser.toString(template))
       expect(parser.toString(template)).toEqual(expected)
     })
   })
