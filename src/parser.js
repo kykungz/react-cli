@@ -23,14 +23,18 @@ const fix = (template) => {
 module.exports.concat = (base, template) => {
   base = fix(base)
   template = fix(template)
-  const concat = Object.keys(template)
+  return Object.keys(template)
     .map(key => ({
       [key]: (base[key] + ('\n' + template[key])).trim()
     }))
     .reduce((acc, cur) => ({...acc, ...cur}), {})
-  return concat
 }
 
+/**
+ * Convert template to String
+ * @param  {object} template - Template to be converted
+ * @return {string} Template in a String form
+ */
 module.exports.toString = (template) => {
   template = fix(template)
   return Object.entries(template)
