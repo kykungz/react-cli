@@ -1,6 +1,4 @@
-import: """
-  import React, { Component } from 'react'
-"""
+import: "import React, { Component } from 'react'"
 
 prefix: ""
 
@@ -17,6 +15,4 @@ body: """
 
 suffix: ""
 
-export: """
-  export default %{COMPONENT_NAME}%
-"""
+export: "export default %{COMPONENT_NAME}%"

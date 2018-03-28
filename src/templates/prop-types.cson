@@ -1,0 +1,9 @@
+import: "import PropTypes from 'prop-types'"
+
+prefix: ""
+
+body: ""
+
+suffix: "%{COMPONENT_NAME}%.propTypes = {}"
+
+export: ""

@@ -35,24 +35,20 @@ export default MyComponent"
 `;
 
 exports[`create functional component should return correct template 1`] = `
-"import React, { Component } from 'react'
+"import React from 'react'
 
-class MyFunctionalComponent extends Component {
-  render () {
-    return (
-      <div>
-      </div>
-    )
-  }
-}
+const MyFunctionalComponent = () => (
+  <div>
+  </div>
+)
 
 export default MyFunctionalComponent"
 `;
 
 exports[`create pure component should return correct template 1`] = `
-"import React, { Component } from 'react'
+"import React, { PureComponent } from 'react'
 
-class MyPureComponent extends Component {
+class MyPureComponent extends PureComponent {
   render () {
     return (
       <div>

@@ -9,22 +9,25 @@ const parser = require('./parser')
 
 class ReactCli {
   create (name, flags) {
-    let template
+    let filename, cson, template
 
     if (flags.functional) {
-      template = 'functional.cson'
+      filename = 'functional.cson'
     } else if (flags.pure) {
-      template = 'pure.cson'
+      filename = 'pure.cson'
     } else {
-      template = 'class.cson'
+      filename = 'class.cson'
     }
 
-    const cson = fs.readFileSync(path.join(__dirname, '/templates/class.cson')).toString()
+    cson = fs.readFileSync(path.join(__dirname, `/templates/${filename}`)).toString()
     template = coffee.eval(cson)
 
-    if (flags['prop-types']) {}
+    if (flags['prop-types']) {
+      cson = fs.readFileSync(path.join(__dirname, `/templates/prop-types.cson`)).toString()
+      template = parser.concat(template, coffee.eval(cson))
+    }
 
-    return parser.parse(name, template)
+    return parser.toString(template).replace(new RegExp('%{COMPONENT_NAME}%', 'g'), name)
   }
 }
 
