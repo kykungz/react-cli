@@ -24,7 +24,9 @@ module.exports.concat = (base, template) => {
   base = fix(base)
   template = fix(template)
   const concat = Object.keys(template)
-    .map(key => ({[key]: base[key] + (template[key] && ('\n' + template[key]))}))
+    .map(key => ({
+      [key]: (base[key] + ('\n' + template[key])).trim()
+    }))
     .reduce((acc, cur) => ({...acc, ...cur}), {})
   return concat
 }
