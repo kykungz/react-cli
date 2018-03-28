@@ -13,8 +13,24 @@ const cli = meow(`
     -p, --pure          Pure Component
     -t, --prop-types    Add propTypes validation
 
-`)
+    `,
+  {
+    boolean: ['functional', 'pure', 'prop-types'],
+    alias: { f: 'functional', p: 'pure', t: 'prop-types' }
+  })
 
 const command = cli.input[0]
 
-reactCli[command] ? reactCli[command]() : cli.showHelp()
+const commandList = {
+  create: () => reactCli.create(cli.input[1], cli.flags)
+}
+
+if (commandList[command]) {
+  try {
+    console.log(commandList[command]())
+  } catch (e) {
+    cli.showHelp()
+  }
+} else {
+  cli.showHelp()
+}
