@@ -1,4 +1,4 @@
-import: "import style from './%{COMPONENT_NAME}%'"
+import: "import styles from './%{COMPONENT_NAME}%.css'"
 
 prefix: ""
 

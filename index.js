@@ -4,7 +4,7 @@
 const meow = require('meow')
 const reactCli = require('./src/react-cli')
 // const constants = require('./src/constants')
-const prompter = require('./src/prompter')
+const prompt = require('./src/prompt')
 
 const cli = meow(
   `
@@ -27,8 +27,6 @@ const cli = meow(
   }
 )
 
-reactCli.init()
-
 const command = cli.input[0]
 const name = cli.input[1]
 
@@ -38,7 +36,7 @@ const commandList = {
 
 if (commandList[command]) {
   try {
-    prompter.prompt(cli.flags).then(answers => {
+    prompt(cli.flags).then(answers => {
       console.log(reactCli.create(name, answers))
     })
   } catch (e) {
