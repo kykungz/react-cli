@@ -7,7 +7,6 @@ const chalk = require('chalk')
 module.exports.prompt = (flags) => {
   prompts[COMPONENT_TYPE].when = () => {
     const { stateful, functional, pure } = flags
-
     if (stateful || functional || pure) {
       const question = new PromptBase(prompts[COMPONENT_TYPE]).getQuestion()
       if (stateful) {
@@ -24,7 +23,6 @@ module.exports.prompt = (flags) => {
 
   prompts[PROP_TYPES].when = () => {
     const { propTypes } = flags
-
     if (propTypes) {
       const question = new PromptBase(prompts[CSS_TYPE]).getQuestion()
       console.log(question + chalk.cyan('Yes'))

@@ -1,0 +1,9 @@
+import: "import style from './%{COMPONENT_NAME}%'"
+
+prefix: ""
+
+body: ""
+
+suffix: ""
+
+export: ""

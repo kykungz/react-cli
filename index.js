@@ -38,8 +38,9 @@ const commandList = {
 
 if (commandList[command]) {
   try {
-    console.log(reactCli.create(name, cli.flags))
-    // prompter.prompt(cli.flags)
+    prompter.prompt(cli.flags).then(answers => {
+      console.log(reactCli.create(name, answers))
+    })
   } catch (e) {
     cli.showHelp()
   }

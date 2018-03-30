@@ -1,35 +1,59 @@
 // const Conf = require('conf')
-// const inquirer = require('inquirer')
+const { COMPONENT_NAME, CSS_MODULE, STYLED_COMPONENTS } = require('./constants')
 const fs = require('fs')
 const path = require('path')
 const coffee = require('coffee-script')
 const parser = require('./parser')
-const { COMPONENT_NAME } = require('./constants')
+const { compose } = require('./util')
 // const config = new Conf()
 
 class ReactCli {
   init () {}
 
-  create (name, flags) {
-    let filename, cson, template
+  create (name, options) {
+    console.log(options)
+    const apply = compose(
+      this._withComponentType,
+      this._withPropType,
+      this._withStyleType
+    )
+    const template = apply(options)
+    return parser.toString(template).replace(new RegExp(COMPONENT_NAME, 'g'), name)
+  }
 
-    if (flags.functional) {
+  _withComponentType (options) {
+    let filename
+    if (options.functional) {
       filename = 'functional.cson'
-    } else if (flags.pure) {
+    } else if (options.pure) {
       filename = 'pure.cson'
     } else {
       filename = 'class.cson'
     }
+    const cson = fs.readFileSync(path.join(__dirname, `/templates/${filename}`)).toString()
+    return coffee.eval(cson)
+  }
 
-    cson = fs.readFileSync(path.join(__dirname, `/templates/${filename}`)).toString()
-    template = coffee.eval(cson)
-
-    if (flags.propTypes) {
-      cson = fs.readFileSync(path.join(__dirname, `/templates/prop-types.cson`)).toString()
-      template = parser.concat(template, coffee.eval(cson))
+  _withPropType (options) {
+    if (options.propTypes) {
+      const cson = fs.readFileSync(path.join(__dirname, `/templates/prop-types.cson`)).toString()
+      return coffee.eval(cson)
     }
+    return {}
+  }
 
-    return parser.toString(template).replace(new RegExp(COMPONENT_NAME, 'g'), name)
+  _withStyleType (options) {
+    let cson
+    switch (options.cssType) {
+      case CSS_MODULE:
+        cson = fs.readFileSync(path.join(__dirname, `/templates/css-module.cson`)).toString()
+        return coffee.eval(cson)
+      case STYLED_COMPONENTS:
+        cson = fs.readFileSync(path.join(__dirname, `/templates/styled-components.cson`)).toString()
+        return coffee.eval(cson)
+      default:
+        return {}
+    }
   }
 }
 
