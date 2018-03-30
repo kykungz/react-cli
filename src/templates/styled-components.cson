@@ -1,0 +1,9 @@
+import: "import styled from 'styled-components'"
+
+prefix: ""
+
+body: ""
+
+suffix: ""
+
+export: ""
