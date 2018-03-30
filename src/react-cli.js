@@ -8,6 +8,8 @@ const { COMPONENT_NAME } = require('./constants')
 // const config = new Conf()
 
 class ReactCli {
+  init () {}
+
   create (name, flags) {
     let filename, cson, template
 
@@ -22,7 +24,7 @@ class ReactCli {
     cson = fs.readFileSync(path.join(__dirname, `/templates/${filename}`)).toString()
     template = coffee.eval(cson)
 
-    if (flags['prop-types']) {
+    if (flags.propTypes) {
       cson = fs.readFileSync(path.join(__dirname, `/templates/prop-types.cson`)).toString()
       template = parser.concat(template, coffee.eval(cson))
     }

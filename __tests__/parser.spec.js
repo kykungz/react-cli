@@ -2,7 +2,7 @@
 
 const parser = require('../src/parser')
 
-describe.only('parser', () => {
+describe('parser', () => {
   describe('concat', () => {
     test('should return merged template', () => {
       const base = {

@@ -4,7 +4,7 @@
   "description": "React utilities",
   "main": "index.js",
   "scripts": {
-    "test": "eslint **/*.js && jest --watchAll"
+    "test": "eslint **/*.js && jest --verbose --watchAll"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/kykungz/react-cli#readme",
   "devDependencies": {
+    "babel-eslint": "^8.2.2",
     "eslint": "^4.19.1",
     "eslint-config-standard": "^11.0.0",
     "eslint-plugin-import": "^2.9.0",
