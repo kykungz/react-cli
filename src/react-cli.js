@@ -20,6 +20,8 @@ class ReactCli {
       this._withStyleType
     )
     const template = apply({ options, filepath })
+
+    // Replace template String with actual content
     const content = parser
       .toString(template)
       .replace(new RegExp(COMPONENT_NAME, 'g'), path.parse(filepath).name)
@@ -35,6 +37,7 @@ class ReactCli {
     } catch (err) {
       throw err
     }
+
     return content
   }
 

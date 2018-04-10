@@ -4,7 +4,8 @@
 const meow = require('meow')
 const reactCli = require('./src/react-cli')
 // const constants = require('./src/constants')
-const prompt = require('./src/prompt')
+const question = require('./src/question')
+const inquirer = require('inquirer')
 
 const cli = meow(
   `
@@ -13,7 +14,7 @@ const cli = meow(
 
     Flags
       -s, --stateful      Stateful Component
-      -f, --functional    Functional/Stateless Component
+      -f, --functional    Functional / Stateless Component
       -p, --pure          Pure Component
       -t, --prop-types    Add propTypes validation
   `,
@@ -36,12 +37,14 @@ const commandList = {
 
 if (commandList[command]) {
   try {
-    prompt(cli.flags).then(answers => {
+    inquirer.prompt(question(cli.flags)).then(answers => {
       console.log(reactCli.create(name, answers))
     })
   } catch (e) {
+    console.log(e)
     cli.showHelp()
   }
 } else {
+  console.log('Command not found.')
   cli.showHelp()
 }
